@@ -1,0 +1,64 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Online Registration Form
+  </h1>
+  <img width="100" height="100" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<div class="outlet">
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div>Name</div>
+  <div><input type="text" [(ngModel)]="user.name" #name="ngModel" name="username" required></div>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="color">
+    <p *ngIf= "name.hasError('required')">
+      User name is Required Field
+    </p>
+  </div>
+  <div>Email</div>
+  <div><input type="text" [(ngModel)]="user.email" #email="ngModel" name="email" required ></div>
+  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="color">
+    <p *ngIf= "email.hasError('required')">
+      Email is Required Field
+    </p>
+  </div>
+  <div>Phone number</div>
+  <div><input type="number" placeholder="+91" min="0" max="2">
+  <input type="text" [(ngModel)]="user.phone" #phone="ngModel" name="phone number " required minlength="10" maxlength="10"></div>
+  <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="color">
+    <p *ngIf= "phone.hasError('required') || phone.hasError('minlength') || phone.hasError('maxlength')">
+      10 Digits are required 
+    </p>
+  </div>
+  <div>Address</div>
+  <div class="table">
+    Line  1 
+  <input type="text" [(ngModel)]="user.line1" #line1="ngModel" name="line1" required>
+   Line  2 
+   <input type="text" [(ngModel)]="user.line2" #line2="ngModel" name="line2" required>
+  </div>
+  <div *ngIf="line1.invalid && (line1.dirty || line1.touched) || line2.invalid && (line2.dirty || line2.touched)" class="color">
+      <p *ngIf= "line1.hasError('required') || line2.hasError('required')">
+        Both line1 and line2 are Required Field
+      </p>
+  </div>
+  <div class="table">
+    District 
+  <input type="text" [(ngModel)]="user.district" #district="ngModel" name="district" required>
+    State 
+  <input type="text" [(ngModel)]="user.state" #state="ngModel" name="state" required>
+  </div>
+  <div *ngIf="district.invalid && (district.dirty || district.touched) || state.invalid && (state.dirty || state.touched)" class="color" >
+      <p *ngIf= "district.hasError('required') || state.hasError('required')">
+        Both District and state are Required Field
+      </p>
+  </div>
+  <div class="table">Pincode
+  <input type="text" [(ngModel)]="user.code" #code="ngModel" name="pincode" required minlength="6" maxlength="6"></div>
+  <div *ngIf="code.invalid && (code.dirty || code.touched)" class="color">
+    <p *ngIf= "code.hasError('required') || code.hasError('minlength') || code.hasError('maxlength')">
+      6 digits are required 
+    </p>
+  </div>
+  <div><input type="submit" name="submit" value="Submit" [disabled]="form.invalid"></div>
+</form>
+</div>

@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+.outlet{
+    border:5px solid;
+    padding: 40px;
+    text-decoration-color: aquamarine ;
+}
+.table{
+    padding: 5px;
+    float: center;
+}
+.color{
+    color: red;
+}
